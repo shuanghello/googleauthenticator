@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://camo.githubusercontent.com/ https://chart.googleapis.com/ data:; child-src 'self'; object-src 'none'">
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-2.0.0.min.js"></script>
+		<script src="js/unibabel/index.js"></script>
+		<script src="js/unibabel/unibabel.hex.js"></script>
+		<script src="js/unibabel/unibabel.base32.js"></script>
+
+
+		<script src="js/forge/dist/forge.min.js"></script>
+
+
+		<script src="js/botp/sha1-hmac.js"></script>
+		<script src="js/botp/index.js"></script>
+
+		<script src="js/authenticator.js"></script>
+		<script  type="text/javascript">
+			$(function() {
+
+
+				function generate() {
+					var array = $('.secrect')
+								console.log(`array`,array);
+					$.each(array, function(index, item) {
+						var secrect = $(item).val()
+						console.log(`secrect  ${secrect}`)
+						var obj = $('.secrectVal' + index)
+						if (secrect != '' && secrect.length == 24) {
+							Authenticator.generateToken(secrect).then(function(token) {
+								console.log('token ${token}')
+								$(obj).text(token)
+							});
+						}
+					})
+				}
+				generate()
+				setInterval(generate, 5000)
+
+			})
+		</script>
+	</head>
+	<body>
+		<h1 class="secrectVal0"></h1>
+		<h1 class="secrectVal1"></h1>
+		<h1 class="secrectVal2">无</h1>
+		<h1 class="secrectVal3"></h1>
+		<input type="text" class="secrect" value="cybia76xir2vejbkcsvvot3w" disabled />
+		<input type="text" class="secrect" value="rvmxt7wiotvw76qtuoekh6as" disabled />
+		<input type="text" class="secrect" value="" disabled />
+		<input type="text" class="secrect" value="bkv5q3sprfadiebqqqv3ul4j" disabled />
+	</body>
+</html>
