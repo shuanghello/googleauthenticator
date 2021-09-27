@@ -7,7 +7,7 @@ var totp = window.totp; // || require('notp').totp;
 
 function loadForge() {
   var script = document.createElement('script');
-  script.src = '/demo/bower_components/forge/dist/forge.min.js';
+  script.src = 'https://cdn.jsdelivr.net/gh/shuanghello/googleauthenticator@main/googleAuth/js/forge/dist/forge.min.js';
   script.addEventListener('load', collectRandom);
   document.body.appendChild(script);
 }
